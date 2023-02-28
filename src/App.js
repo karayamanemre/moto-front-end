@@ -7,6 +7,8 @@ import AddMotorcycle from './Components/Pages/AddMotorcycle';
 import Reservations from './Components/Pages/Reservations';
 import MakeReservation from './Components/Pages/MakeReservation';
 import MotorcycleDetails from './Components/Pages/MotorcycleDetails';
+import Login from './Components/Pages/Login';
+import Register from './Components/Pages/Register';
 
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
             path="/motorcycle-details/:id"
             element={<MotorcycleDetails />}
           />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </BrowserRouter>

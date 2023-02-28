@@ -26,16 +26,17 @@ export const fetchMotorcycle = createAsyncThunk(GET_MOTORCYCLE, async () => {
   return motos;
 });
 
-export const addMotorcycle = createAsyncThunk(
-  'moto-mate/motorcycles/addMotorcycle',
-  async (motorcycle) => {
-    const response = await axios.post(
-      'http://localhost:3000/api/v1/motorcycles',
-      motorcycle,
-    );
-    return response.data;
-  },
-);
+export const addMotorcycle = (motorcycle) => (dispatch) => {
+  axios
+    .post('http://localhost:3000/api/v1/motorcycles', motorcycle)
+    .then((res) => {
+      dispatch({
+        type: ADD_MOTORCYCLE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => err);
+};
 
 export const deleteMotorcycle = createAsyncThunk(
   'moto-mate/motorcycles/deleteMotorcycle',
