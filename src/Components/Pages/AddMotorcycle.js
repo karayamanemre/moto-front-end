@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addMotorcycle } from '../../redux/motorcycles';
+import { useNavigate } from 'react-router-dom';
 
 const AddMotorcycle = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [motorcycle, setMotorcycle] = useState({
     name: '',
     description: '',
@@ -22,6 +24,7 @@ const AddMotorcycle = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addMotorcycle(motorcycle));
+    navigate('/motorcycles');
   };
 
   return (

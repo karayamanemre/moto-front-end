@@ -8,10 +8,13 @@ const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(login(username));
-    navigate('/');
+    const success = await dispatch(login(username));
+    if (success) {
+      localStorage.setItem('token', success.token);
+      navigate('/');
+    }
   };
 
   return (

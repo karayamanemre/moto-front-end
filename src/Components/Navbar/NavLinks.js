@@ -9,6 +9,7 @@ const NavLinks = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    localStorage.removeItem('token');
   };
 
   return (
@@ -16,30 +17,30 @@ const NavLinks = () => {
       <li className="pl-4 py-2 hover:bg-gray-100">
         <NavLink to="/motorcycles">Motorcycles</NavLink>
       </li>
-      <li className="pl-4 py-2 hover:bg-gray-100">
-        <NavLink to="/reservations">Reservations</NavLink>
-      </li>
-      <li className="pl-4 py-2 hover:bg-gray-100">
-        <NavLink to="/my-reservations">My Reservations</NavLink>
-      </li>
-      <li className="pl-4 py-2 hover:bg-gray-100">
-        <NavLink to="/add-motorcycle">Add a Motorcycle</NavLink>
-      </li>
-      <li className="pl-4 py-2 hover:bg-gray-100">
-        <NavLink to="/delete-motorcycle">Delete Motorcycle</NavLink>
-      </li>
-      {currentUser ? (
+      {currentUser && (
         <>
-          <li className="pl-4 py-2 hover:bg-gray-100 mt-5">
-            <span>{currentUser.user_name}</span>
+          <li className="pl-4 py-2 hover:bg-gray-100">
+            <NavLink to="/make-reservations">Make a Reservation</NavLink>
           </li>
           <li className="pl-4 py-2 hover:bg-gray-100">
-            <button onClick={handleLogout}>Logout</button>
+            <NavLink to="/my-reservations">My Reservations</NavLink>
+          </li>
+          <li className="pl-4 py-2 hover:bg-gray-100">
+            <NavLink to="/add-motorcycle">Add a Motorcycle</NavLink>
+          </li>
+          <li className="pl-4 py-2 hover:bg-gray-100">
+            <NavLink to="/delete-motorcycle">Delete Motorcycle</NavLink>
+          </li>
+          <li className="pl-4 py-2 hover:bg-gray-100">
+            <NavLink to="/motorcycles" onClick={handleLogout}>
+              Logout
+            </NavLink>
           </li>
         </>
-      ) : (
+      )}
+      {!currentUser && (
         <>
-          <li className="pl-4 py-2 hover:bg-gray-100 mt-5">
+          <li className="pl-4 py-2 hover:bg-gray-100">
             <NavLink to="/login">Login</NavLink>
           </li>
           <li className="pl-4 py-2 hover:bg-gray-100">
