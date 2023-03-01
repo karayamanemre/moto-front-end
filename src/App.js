@@ -14,7 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="flex justify-center items-center bg-gray-100 h-screen">
+      <div className="flex justify-center items-center bg-gray-100 min-h-screen">
         <Routes>
           <Route path="/" element={<Motorcycles />} />
           <Route path="/Motorcycles" element={<Motorcycles />} />
