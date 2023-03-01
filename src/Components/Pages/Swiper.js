@@ -9,6 +9,7 @@ SwiperCore.use([Navigation, Pagination]);
 const SwiperComponent = ({ motorcycles }) => {
   return (
     <Swiper
+      loop
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
@@ -20,7 +21,7 @@ const SwiperComponent = ({ motorcycles }) => {
           slidesPerView: 2,
         },
       }}
-      className="py-10"
+      className="py-20"
     >
       {motorcycles.map((motorcycle) => (
         <SwiperSlide key={motorcycle.id}>
