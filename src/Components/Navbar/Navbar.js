@@ -24,7 +24,7 @@ const Navbar = () => {
         }`}
       >
         <button
-          className="text-gray-500 w-8 h-8 bg-white rounded hover:text-gray-600 focus:outline-none relative inset-44 sm:left-56 top-4"
+          className="w-8 h-8 bg-white rounded hover:text-gray-600 focus:outline-none relative inset-44 sm:left-56 top-4"
           onClick={handleToggle}
         >
           {isOpen ? (
