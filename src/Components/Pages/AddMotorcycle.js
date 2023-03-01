@@ -28,9 +28,9 @@ const AddMotorcycle = () => {
   };
 
   return (
-    <div className="mx-20 my-10">
+    <div className="mx-auto my-10">
       <form onSubmit={handleSubmit}>
-        <div className="mb-6">
+        <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="name"
@@ -47,7 +47,7 @@ const AddMotorcycle = () => {
             value={motorcycle.name}
           />
         </div>
-        <div className="mb-6">
+        <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="description"
@@ -55,7 +55,7 @@ const AddMotorcycle = () => {
             Description
           </label>
           <textarea
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="resize-none shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="description"
             name="description"
             placeholder="Enter motorcycle description"
@@ -63,7 +63,7 @@ const AddMotorcycle = () => {
             value={motorcycle.description}
           />
         </div>
-        <div className="mb-6">
+        <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="img_url"
@@ -80,7 +80,7 @@ const AddMotorcycle = () => {
             value={motorcycle.img_url}
           />
         </div>
-        <div className="mb-6">
+        <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="model_year"
@@ -97,7 +97,7 @@ const AddMotorcycle = () => {
             value={motorcycle.model_year}
           />
         </div>
-        <div className="mb-6">
+        <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="price"
@@ -114,7 +114,7 @@ const AddMotorcycle = () => {
             value={motorcycle.price}
           />
         </div>
-        <div className="mb-6">
+        <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="engine"
@@ -131,7 +131,7 @@ const AddMotorcycle = () => {
             value={motorcycle.engine}
           />
         </div>
-        <div className="mb-6">
+        <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="fuel_type"
