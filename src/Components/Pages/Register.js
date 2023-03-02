@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { register } from '../../redux/users';
 
 const Register = () => {
@@ -16,13 +16,13 @@ const Register = () => {
   };
 
   return (
-    <div className="mx-20 my-10">
-      <form onSubmit={handleSubmit}>
+    <div className="flex justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="shadow-xl rounded-xl px-8 pt-6 pb-8 bg-gray-300 bg-opacity-70"
+      >
         <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="name"
-          >
+          <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
             Full Name
           </label>
           <input
@@ -37,7 +37,7 @@ const Register = () => {
         </div>
         <div className="mb-6">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block text-gray-700 font-bold mb-2"
             htmlFor="username"
           >
             User Name
@@ -52,13 +52,20 @@ const Register = () => {
             value={username}
           />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex flex-col gap-4 items-center justify-center">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-cyan-900 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Register
           </button>
+          <p>Already registered?</p>
+          <Link
+            to="/login"
+            className="bg-cyan-900 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Login
+          </Link>
         </div>
       </form>
     </div>

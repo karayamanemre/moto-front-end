@@ -17,32 +17,41 @@ const DeleteMotorcycles = () => {
   };
 
   return (
-    <div className="mx-20 my-10 flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-5">Delete Motorcycles</h1>
-      <ul className="flex flex-wrap items-center justify-center gap-6">
-        {motorcycles.map((motorcycle) => (
-          <li key={motorcycle.id} className="mb-4">
-            <div className="flex items-center">
-              <img
-                src={motorcycle.img_url}
-                alt={motorcycle.name}
-                className="w-40 h-40"
-              />
-              <div>
-                <h2 className="text-lg font-bold">{motorcycle.name}</h2>
-                <p>{motorcycle.description}</p>
-                <p className="text-sm">Price: ${motorcycle.price}</p>
-                <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  onClick={() => handleDelete(motorcycle.id)}
-                >
-                  Delete
-                </button>
-              </div>
+    <div className="mx-auto px-4 py-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <h2 className="text-3xl font-bold mb-8 col-span-full text-center text-gray-800">
+        Delete Motorcycles
+      </h2>
+      {motorcycles.map((motorcycle) => (
+        <div
+          className="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"
+          key={motorcycle.id}
+        >
+          <img
+            src={motorcycle.img_url}
+            alt={motorcycle.name}
+            className="h-44 w-full object-cover rounded-t-lg"
+          />
+          <div className="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <p className="text-lg font-bold mb-2 text-gray-800">
+                {motorcycle.name}
+              </p>
+              <p className="mb-2 text-gray-700">{motorcycle.description}</p>
             </div>
-          </li>
-        ))}
-      </ul>
+            <div className="flex justify-between items-end">
+              <p className="font-bold text-lg text-gray-700">
+                ${motorcycle.price}
+              </p>
+              <button
+                className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onClick={() => handleDelete(motorcycle.id)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

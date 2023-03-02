@@ -28,8 +28,11 @@ const AddMotorcycle = () => {
   };
 
   return (
-    <div className="mx-auto my-10">
-      <form onSubmit={handleSubmit}>
+    <div className="flex justify-center  w-full">
+      <form
+        onSubmit={handleSubmit}
+        className="shadow-xl rounded-xl px-8 pt-6 pb-8 bg-gray-300 bg-opacity-70 w-3/4 sm:w-2/4"
+      >
         <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -150,7 +153,7 @@ const AddMotorcycle = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-cyan-900 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Add Motorcycle
         </button>

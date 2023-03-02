@@ -45,10 +45,10 @@ function MakeReservation() {
   };
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="flex justify-center">
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="shadow-xl rounded-xl px-8 pt-6 pb-8 bg-gray-300 bg-opacity-70"
       >
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="city">
@@ -94,7 +94,7 @@ function MakeReservation() {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-cyan-900 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Make Reservation

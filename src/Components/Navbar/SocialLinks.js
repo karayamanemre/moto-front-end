@@ -13,7 +13,7 @@ const SocialLinks = () => {
         href="https://facebook.com"
         target="_blank"
         rel="noreferrer"
-        className="mr-3 text-xl sm:text-3xl hover:text-gray-700"
+        className="mr-3 text-xl sm:text-3xl text-cyan-900 hover:text-cyan-800"
       >
         <FaFacebook />
       </a>
@@ -21,7 +21,7 @@ const SocialLinks = () => {
         href="https://twitter.com"
         target="_blank"
         rel="noreferrer"
-        className="mr-3 text-xl sm:text-3xl hover:text-gray-700"
+        className="mr-3 text-xl sm:text-3xl text-cyan-900 hover:text-cyan-800"
       >
         <FaTwitter />
       </a>
@@ -29,7 +29,7 @@ const SocialLinks = () => {
         href="https://instagram.com"
         target="_blank"
         rel="noreferrer"
-        className="mr-3 text-xl sm:text-3xl hover:text-gray-700"
+        className="mr-3 text-xl sm:text-3xl text-cyan-900 hover:text-cyan-800"
       >
         <FaInstagram />
       </a>
@@ -37,7 +37,7 @@ const SocialLinks = () => {
         href="https://pinterest.com"
         target="_blank"
         rel="noreferrer"
-        className="text-xl sm:text-3xl hover:text-gray-700 "
+        className="text-xl sm:text-3xl text-cyan-900 hover:text-cyan-800"
       >
         <FaPinterest />
       </a>

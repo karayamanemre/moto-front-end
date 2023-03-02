@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Navbar from './Components/Navbar/Navbar';
 import Motorcycles from './Components/Pages/Motorcycles';
 import DeleteMotorcycle from './Components/Pages/DeleteMotorcycle';
@@ -10,6 +11,7 @@ import MotorcycleDetails from './Components/Pages/MotorcycleDetails';
 import Login from './Components/Pages/Login';
 import Register from './Components/Pages/Register';
 import withAuth from './Components/Pages/Auth';
+import { setCurrentUser } from './redux/users';
 
 const AuthMakeReservation = withAuth(MakeReservation);
 const AuthReservations = withAuth(Reservations);
@@ -18,6 +20,17 @@ const AuthDeleteMotorcycle = withAuth(DeleteMotorcycle);
 const AuthMotorcycleDetails = withAuth(MotorcycleDetails);
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedUserId = localStorage.getItem('user_id');
+    const storedUsername = localStorage.getItem('username');
+
+    if (storedUserId && storedUsername) {
+      dispatch(setCurrentUser({ id: storedUserId, username: storedUsername }));
+    }
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -27,7 +40,7 @@ const App = () => {
           <Route path="/Motorcycles" element={<Motorcycles />} />
           <Route path="/add-motorcycle" element={<AuthAddMotorcycle />} />
           <Route path="/delete-motorcycle" element={<AuthDeleteMotorcycle />} />
-          <Route path="/my-reservations" element={<AuthReservations />} />
+          <Route path="/reservations" element={<AuthReservations />} />
           <Route path="/make-reservation" element={<AuthMakeReservation />} />
           <Route
             path="/motorcycle-details/:id"

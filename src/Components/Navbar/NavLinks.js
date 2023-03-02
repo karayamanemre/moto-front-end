@@ -20,22 +20,22 @@ const NavLinks = ({ handleClose }) => {
   };
 
   return (
-    <ul className="mt-4 text-lg sm:text-xl" onClick={handleClose}>
-      <li className="pl-4 py-2 hover:bg-gray-100">
+    <ul className="mt-4 w-full text-lg sm:text-xl" onClick={handleClose}>
+      <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
         <NavLink to="/motorcycles">Motorcycles</NavLink>
       </li>
       {localStorage.getItem('username') ? (
         <>
-          <li className="pl-4 py-2 hover:bg-gray-100">
-            <NavLink to="/my-reservations">My Reservations</NavLink>
+          <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
+            <NavLink to="/reservations">My Reservations</NavLink>
           </li>
-          <li className="pl-4 py-2 hover:bg-gray-100">
+          <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
             <NavLink to="/add-motorcycle">Add a Motorcycle</NavLink>
           </li>
-          <li className="pl-4 py-2 hover:bg-gray-100">
+          <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
             <NavLink to="/delete-motorcycle">Delete Motorcycle</NavLink>
           </li>
-          <li className="pl-4 py-2 hover:bg-gray-100">
+          <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
             <NavLink to="/motorcycles" onClick={handleLogout}>
               Logout
             </NavLink>
@@ -43,10 +43,10 @@ const NavLinks = ({ handleClose }) => {
         </>
       ) : (
         <>
-          <li className="pl-4 py-2 hover:bg-gray-100">
+          <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
             <NavLink to="/login">Login</NavLink>
           </li>
-          <li className="pl-4 py-2 hover:bg-gray-100">
+          <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
             <NavLink to="/register">Register</NavLink>
           </li>
         </>

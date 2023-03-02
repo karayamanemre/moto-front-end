@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReservations, deleteReservation } from '../../redux/reservations';
+import { deleteReservation, fetchReservations } from '../../redux/reservations';
 import { fetchMotorcycle } from '../../redux/motorcycles';
 
 const Reservations = () => {
@@ -24,46 +24,52 @@ const Reservations = () => {
   };
 
   const handleDeleteReservation = (id) => {
-    if (window.confirm('Are you sure you want to delete this motorcycle?')) {
+    if (window.confirm('Are you sure you want to cancel this reservation?')) {
       dispatch(deleteReservation(id)).then(() => dispatch(fetchReservations()));
     }
   };
 
   return (
-    <div className="mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Reservations</h1>
+    <div className="mx-auto px-4 py-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <h2 className="text-3xl font-bold mb-8 col-span-full text-center text-gray-800">
+        Reservations
+      </h2>
       {reservations.map((reservation) => (
         <div
-          className="bg-gray-200 rounded-lg shadow-lg p-6 mb-6 flex items-center gap-4"
+          className="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"
           key={reservation.id}
         >
           <img
             src={getMotorcycleImage(reservation.motorcycle_id)}
             alt={getMotorcycleName(reservation.motorcycle_id)}
-            className="h-44 w-1/2"
+            className="h-44 w-full object-cover rounded-t-lg"
           />
-          <div className="flex flex-col w-1/2 sm:text-lg text-sm">
-            <p className="sm:text-lg text-md mb-2 self-center">
-              {getMotorcycleName(reservation.motorcycle_id)}
-            </p>
-            <p className="text-gray-600 mb-2 flex justify-between">
-              <span>City:</span>
-              <span>{reservation.city}</span>
-            </p>
-            <p className="text-gray-600 mb-2 flex justify-between">
-              <span>Start Date:</span>
-              <span>{reservation.start_date}</span>
-            </p>
-            <p className="text-gray-600 flex justify-between">
-              <span>End Date:</span>
-              <span>{reservation.end_date}</span>
-            </p>
-            <button
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2"
-              onClick={() => handleDeleteReservation(reservation.id)}
-            >
-              Delete
-            </button>
+          <div className="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <p className="text-lg font-bold mb-2 text-gray-800">
+                {getMotorcycleName(reservation.motorcycle_id)}
+              </p>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-700 font-bold">City:</span>
+                <span className="text-gray-700">{reservation.city}</span>
+              </div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-700 font-bold">Start Date:</span>
+                <span className="text-gray-700">{reservation.start_date}</span>
+              </div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-700 font-bold">End Date:</span>
+                <span className="text-gray-700">{reservation.end_date}</span>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <button
+                className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2"
+                onClick={() => handleDeleteReservation(reservation.id)}
+              >
+                Cancel Reservation
+              </button>
+            </div>
           </div>
         </div>
       ))}
