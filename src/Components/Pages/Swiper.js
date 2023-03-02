@@ -9,7 +9,7 @@ SwiperCore.use([Navigation, Pagination]);
 const SwiperComponent = ({ motorcycles }) => {
   return (
     <Swiper
-      loop
+      loop={true}
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
@@ -25,7 +25,7 @@ const SwiperComponent = ({ motorcycles }) => {
     >
       {motorcycles.map((motorcycle) => (
         <SwiperSlide key={motorcycle.id}>
-          <div className="max-w-md m-4 rounded overflow-hidden shadow-lg transition ease-in-out delay-50 hover:scale-105 hover:shadow-xl">
+          <div className="max-w-md m-4 p-2 rounded overflow-hidden shadow-lg transition ease-in-out delay-50 hover:scale-105 hover:shadow-xl">
             <Link
               to={`/motorcycle-details/${motorcycle.id}`}
               onClick={() =>

@@ -9,6 +9,13 @@ export const login = createAsyncThunk('user/login', async (username) => {
   return response.data;
 });
 
+export const setCurrentUser = (currentUser) => {
+  return {
+    type: 'SET_CURRENT_USER',
+    payload: currentUser,
+  };
+};
+
 // Async action creator for registering a new user
 export const register = createAsyncThunk(
   'user/register',
@@ -21,15 +28,22 @@ export const register = createAsyncThunk(
   },
 );
 
+// Get the stored values from local storage
+const storedUsername = localStorage.getItem('username');
+const storedToken = localStorage.getItem('token');
+
+// Define the initial state based on whether the stored values exist
+const initialState = {
+  currentUser: storedUsername || null,
+  isLoggedIn: !!storedToken,
+  isLoading: false,
+  error: null,
+};
+
 // Slice for user
 const userSlice = createSlice({
   name: 'user',
-  initialState: {
-    currentUser: null,
-    isLoggedIn: false,
-    isLoading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
     logout: (state) => {
       state.currentUser = null;

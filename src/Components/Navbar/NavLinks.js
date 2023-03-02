@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../redux/users';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, setCurrentUser } from '../../redux/users';
 
 const NavLinks = () => {
-  const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      dispatch(setCurrentUser(storedUsername));
+    }
+  }, [dispatch]);
 
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
   };
 
   return (
@@ -17,7 +25,7 @@ const NavLinks = () => {
       <li className="pl-4 py-2 hover:bg-gray-100">
         <NavLink to="/motorcycles">Motorcycles</NavLink>
       </li>
-      {currentUser && (
+      {currentUser !== null && ( // Add a check for null value
         <>
           <li className="pl-4 py-2 hover:bg-gray-100">
             <NavLink to="/make-reservations">Make a Reservation</NavLink>
@@ -38,7 +46,7 @@ const NavLinks = () => {
           </li>
         </>
       )}
-      {!currentUser && (
+      {currentUser === null && ( // Add a check for null value
         <>
           <li className="pl-4 py-2 hover:bg-gray-100">
             <NavLink to="/login">Login</NavLink>

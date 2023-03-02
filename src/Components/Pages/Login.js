@@ -13,6 +13,7 @@ const Login = () => {
     const success = await dispatch(login(username));
     if (success) {
       localStorage.setItem('token', success.token);
+      localStorage.setItem('username', username);
       navigate('/');
     }
   };
