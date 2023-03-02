@@ -33,14 +33,16 @@ const MotorcycleDetails = () => {
           <p>{motorcycle.fuel}</p>
         </li>
         <li className="text-md px-4 py-2 mt-6">
-          <Link
-            to={`/motorcycles`}
-            onClick={() =>
-              localStorage.setItem('motorcycle', JSON.stringify(motorcycle))
-            }
-            className="after:content-['_>']"
-          >
+          <Link to={`/motorcycles`} className="after:content-['_>']">
             DISCOVER MORE MODELS
+          </Link>
+        </li>
+        <li className="text-md px-4 py-2 mt-8">
+          <Link
+            to={`/make-reservation`}
+            className="button bg-green-400 p-4 rounded-full"
+          >
+            Make a Reservation
           </Link>
         </li>
       </ul>
