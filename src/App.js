@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/Motorcycles" element={<Motorcycles />} />
           <Route path="/add-motorcycle" element={<AuthAddMotorcycle />} />
           <Route path="/delete-motorcycle" element={<AuthDeleteMotorcycle />} />
-          <Route path="/reservations" element={<AuthReservations />} />
+          <Route path="/my-reservations" element={<AuthReservations />} />
           <Route path="/make-reservation" element={<AuthMakeReservation />} />
           <Route
             path="/motorcycle-details/:id"

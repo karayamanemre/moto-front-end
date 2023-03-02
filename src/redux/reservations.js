@@ -3,19 +3,18 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 const GET_RESERVATIONS = 'moto-frontend/reservations/GET_RESERVATIONS';
 const initialState = [];
 
-export const fetchResevations = createAsyncThunk(GET_RESERVATIONS, async () => {
-  const session = JSON.parse(localStorage.getItem('session'));
+export const fetchReservations = createAsyncThunk(
+  GET_RESERVATIONS,
+  async () => {
+    const userId = localStorage.getItem('user_id');
 
-  const data = await fetch('http://127.0.0.1:3000/api/v1/reservations', {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json',
-      Authorization: `Bearer ${session.token}`,
-    },
-  });
-  const response = await data.json();
-  return response;
-});
+    const data = await fetch(
+      `http://127.0.0.1:3000/api/v1/reservations/user/${userId}`,
+    );
+    const response = await data.json();
+    return response.data;
+  },
+);
 
 const reservationsReducer = (state = initialState, action) => {
   switch (action.type) {
