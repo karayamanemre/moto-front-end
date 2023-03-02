@@ -9,6 +9,13 @@ import MakeReservation from './Components/Pages/MakeReservation';
 import MotorcycleDetails from './Components/Pages/MotorcycleDetails';
 import Login from './Components/Pages/Login';
 import Register from './Components/Pages/Register';
+import withAuth from './Components/Pages/Auth';
+
+const AuthMakeReservation = withAuth(MakeReservation);
+const AuthReservations = withAuth(Reservations);
+const AuthAddMotorcycle = withAuth(AddMotorcycle);
+const AuthDeleteMotorcycle = withAuth(DeleteMotorcycle);
+const AuthMotorcycleDetails = withAuth(MotorcycleDetails);
 
 const App = () => {
   return (
@@ -18,13 +25,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Motorcycles />} />
           <Route path="/Motorcycles" element={<Motorcycles />} />
-          <Route path="/add-motorcycle" element={<AddMotorcycle />} />
-          <Route path="/delete-motorcycle" element={<DeleteMotorcycle />} />
-          <Route path="/reservations" element={<Reservations />} />
-          <Route path="/make-reservation" element={<MakeReservation />} />
+          <Route path="/add-motorcycle" element={<AuthAddMotorcycle />} />
+          <Route path="/delete-motorcycle" element={<AuthDeleteMotorcycle />} />
+          <Route path="/reservations" element={<AuthReservations />} />
+          <Route path="/make-reservation" element={<AuthMakeReservation />} />
           <Route
             path="/motorcycle-details/:id"
-            element={<MotorcycleDetails />}
+            element={<AuthMotorcycleDetails />}
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
