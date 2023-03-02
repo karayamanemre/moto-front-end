@@ -18,6 +18,7 @@ const NavLinks = () => {
     dispatch(logout());
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    localStorage.removeItem('user_id');
   };
 
   return (
@@ -27,9 +28,6 @@ const NavLinks = () => {
       </li>
       {currentUser !== null && ( // Add a check for null value
         <>
-          <li className="pl-4 py-2 hover:bg-gray-100">
-            <NavLink to="/make-reservation">Make a Reservation</NavLink>
-          </li>
           <li className="pl-4 py-2 hover:bg-gray-100">
             <NavLink to="/my-reservations">My Reservations</NavLink>
           </li>

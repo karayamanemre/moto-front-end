@@ -9,7 +9,6 @@ SwiperCore.use([Navigation, Pagination]);
 const SwiperComponent = ({ motorcycles }) => {
   return (
     <Swiper
-      loop={true}
       slidesPerView={1}
       navigation
       pagination={{ clickable: true }}
