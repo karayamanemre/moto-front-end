@@ -1,28 +1,84 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const GET_RESERVATIONS = 'moto-frontend/reservations/GET_RESERVATIONS';
+// Define the initial state for reservations
 const initialState = [];
 
+// Define an async thunk to fetch reservations from the API
 export const fetchReservations = createAsyncThunk(
-  GET_RESERVATIONS,
+  'reservations/fetchReservations',
   async () => {
     const userId = localStorage.getItem('user_id');
-
-    const data = await fetch(
-      `http://127.0.0.1:3000/api/v1/reservations/user/${userId}`,
+    const response = await fetch(
+      `http://localhost:3000/api/v1/users/${userId}/reservations`,
     );
-    const response = await data.json();
-    return response.data;
+    const data = await response.json();
+    return data.data;
   },
 );
 
-const reservationsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case `${GET_RESERVATIONS}/fulfilled`:
-      return action.payload;
-    default:
-      return state;
-  }
-};
+// Define an async thunk to post a new reservation to the API
+export const postReservation = createAsyncThunk(
+  'reservations/postReservation',
+  async (reservationData) => {
+    const userId = localStorage.getItem('user_id');
+    const motorcycle = JSON.parse(localStorage.getItem('motorcycle'));
+    const motorcycleId = motorcycle.id;
 
-export default reservationsReducer;
+    const response = await fetch(
+      `http://localhost:3000/api/v1/reservations/user/${userId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...reservationData,
+          user_id: userId,
+          motorcycle_id: motorcycleId,
+        }),
+      },
+    );
+    const data = await response.json();
+    return data.data;
+  },
+);
+
+// Define an async thunk to delete a reservation from the API
+export const deleteReservation = createAsyncThunk(
+  'reservations/deleteReservation',
+  async (reservationId) => {
+    const response = await fetch(
+      `http://localhost:3000/api/v1/reservations/user/${reservationId}`, // include the reservationId in the URL
+      {
+        method: 'DELETE',
+      },
+    );
+    const data = await response.json();
+    return data;
+  },
+);
+
+// Define the reservations slice of the Redux store
+const reservationsSlice = createSlice({
+  name: 'reservations',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    // Handle the fetchReservations fulfilled action
+    builder.addCase(fetchReservations.fulfilled, (state, action) => {
+      return action.payload;
+    });
+    // Handle the postReservation fulfilled action
+    builder.addCase(postReservation.fulfilled, (state, action) => {
+      state.push(action.payload);
+    });
+    // Handle the deleteReservation fulfilled action
+    builder.addCase(deleteReservation.fulfilled, (state, action) => {
+      return state.filter(
+        (reservation) => reservation.id !== action.payload.id,
+      );
+    });
+  },
+});
+
+export default reservationsSlice.reducer;

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout, setCurrentUser } from '../../redux/users';
 
-const NavLinks = () => {
+const NavLinks = ({ handleClose }) => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem('username');
@@ -16,17 +15,16 @@ const NavLinks = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    localStorage.removeItem('token');
     localStorage.removeItem('username');
     localStorage.removeItem('user_id');
   };
 
   return (
-    <ul className="mt-4 text-lg sm:text-xl">
+    <ul className="mt-4 text-lg sm:text-xl" onClick={handleClose}>
       <li className="pl-4 py-2 hover:bg-gray-100">
         <NavLink to="/motorcycles">Motorcycles</NavLink>
       </li>
-      {currentUser !== null && ( // Add a check for null value
+      {localStorage.getItem('username') ? (
         <>
           <li className="pl-4 py-2 hover:bg-gray-100">
             <NavLink to="/my-reservations">My Reservations</NavLink>
@@ -43,8 +41,7 @@ const NavLinks = () => {
             </NavLink>
           </li>
         </>
-      )}
-      {currentUser === null && ( // Add a check for null value
+      ) : (
         <>
           <li className="pl-4 py-2 hover:bg-gray-100">
             <NavLink to="/login">Login</NavLink>

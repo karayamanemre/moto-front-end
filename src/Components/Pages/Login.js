@@ -13,7 +13,6 @@ const Login = () => {
     const response = await dispatch(login(username));
     if (response.payload.status === 200) {
       const { id, user_name } = response.payload.data;
-      localStorage.setItem('token', response.payload.token);
       localStorage.setItem('user_id', id);
       localStorage.setItem('username', user_name);
       navigate('/');

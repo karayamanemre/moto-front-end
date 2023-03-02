@@ -12,7 +12,7 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(register({ name, username }));
-    navigate('/');
+    navigate('/login');
   };
 
   return (
@@ -23,14 +23,14 @@ const Register = () => {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="name"
           >
-            Name
+            Full Name
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="name"
             name="name"
             type="text"
-            placeholder="Enter your name"
+            placeholder="Enter your full name"
             onChange={(e) => setName(e.target.value)}
             value={name}
           />
@@ -40,14 +40,14 @@ const Register = () => {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="username"
           >
-            Username
+            User Name
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             name="username"
             type="text"
-            placeholder="Enter your username"
+            placeholder="Enter a username"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
