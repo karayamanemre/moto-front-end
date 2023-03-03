@@ -29,11 +29,30 @@ const Reservations = () => {
     }
   };
 
+  if (!localStorage.getItem('id')) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen p-2">
+        <h1 className="text-3xl font-bold mb-4">Sorry!</h1>
+        <p className="text-lg text-gray-600 mb-8">
+          Looks like you're not logged in yet. Please login to access this page.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto px-4 py-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       <h2 className="text-3xl font-bold mb-8 col-span-full text-center text-gray-800">
-        Reservations
+        Reservations for:{' '}
+        {localStorage.getItem('name') &&
+          localStorage.getItem('name').charAt(0).toUpperCase() +
+            localStorage.getItem('name').slice(1)}
       </h2>
+      {reservations.length === 0 && (
+        <p className="text-lg font-bold text-gray-800 text-center">
+          You have no reservations yet.
+        </p>
+      )}
       {reservations.map((reservation) => (
         <div
           className="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"

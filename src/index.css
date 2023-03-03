@@ -6,3 +6,16 @@
 * {
   font-family: 'gelica', sans-serif;
 }
+
+#reservation-page {
+  background: linear-gradient(
+      45deg,
+      rgba(25, 94, 100, 0.6),
+      rgba(25, 94, 117, 0.9)
+    ),
+    url('./Images/bg.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100svh;
+  width: 100svw;
+}

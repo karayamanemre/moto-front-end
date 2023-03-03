@@ -1,75 +1,68 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
-import { register } from '../../redux/users';
+import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+function Login() {
   const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
+  const [alert, setAlert] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(register({ name, username }));
-    navigate('/login');
+  const createUser = (e) => {
+    e.preventDefault();
+
+    const user = {
+      name,
+    };
+
+    const userData = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user),
+    };
+    fetch('http://localhost:3000/api/v1/register', userData)
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem('id', data.id);
+        localStorage.setItem('name', data.name);
+        setAlert('Logged in. Redirecting to main page.');
+        return data;
+      })
+      .catch((error) => console.error(error));
+
+    setName('');
+    setTimeout(() => {
+      setAlert('');
+      navigate('/motorcycles');
+    }, 1500);
   };
-
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col items-center">
       <form
-        onSubmit={handleSubmit}
-        className="shadow-xl rounded-xl px-8 pt-6 pb-8 bg-gray-300 bg-opacity-70"
+        onSubmit={createUser}
+        className="flex flex-col bg-gray-300 p-4 gap-4 rounded-2xl"
       >
-        <div className="mb-6">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
-            Full Name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Enter your full name"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            className="block text-gray-700 font-bold mb-2"
-            htmlFor="username"
-          >
-            User Name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
-            name="username"
-            type="text"
-            placeholder="Enter a username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-        </div>
-        <div className="flex flex-col gap-4 items-center justify-center">
-          <button
-            className="bg-cyan-900 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Register
-          </button>
-          <p>Already registered?</p>
-          <Link
-            to="/login"
-            className="bg-cyan-900 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Login
-          </Link>
-        </div>
+        <h2 className="text-2xl font-bold mb-4">Login</h2>
+        <label htmlFor="name" className="hidden">
+          Name:
+        </label>
+        <input
+          id="name"
+          type="text"
+          className="p-2 border rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+
+        <button
+          type="submit"
+          className="bg-cyan-900 hover:bg-cyan-800 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Submit
+        </button>
       </form>
+      {alert && <span className="text-red-500 mt-4">{alert}</span>}
     </div>
   );
-};
-
-export default Register;
+}
+export default Login;

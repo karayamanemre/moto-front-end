@@ -7,7 +7,7 @@ const initialState = [];
 export const fetchReservations = createAsyncThunk(
   'reservations/fetchReservations',
   async () => {
-    const userId = localStorage.getItem('user_id');
+    const userId = localStorage.getItem('id');
     const response = await fetch(
       `http://localhost:3000/api/v1/users/${userId}/reservations`,
     );
@@ -20,7 +20,7 @@ export const fetchReservations = createAsyncThunk(
 export const postReservation = createAsyncThunk(
   'reservations/postReservation',
   async (reservationData) => {
-    const userId = localStorage.getItem('user_id');
+    const userId = localStorage.getItem('id');
     const motorcycle = JSON.parse(localStorage.getItem('motorcycle'));
     const motorcycleId = motorcycle.id;
 
