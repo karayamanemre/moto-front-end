@@ -14,7 +14,7 @@ const PageNotFound = () => {
     <div className="flex flex-col items-center justify-center h-screen p-2">
       <h1 className="text-3xl font-bold mb-4">Page not found</h1>
       <p className="text-lg text-gray-600 mb-8">
-        We couldn't find the page you were looking for.
+        We couldn&apos;t find the page you were looking for.
       </p>
     </div>
   );
