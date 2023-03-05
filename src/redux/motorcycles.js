@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const ADD_MOTORCYCLE = 'moto-mate/motorcycles/ADD_MOTORCYCLE';
 const GET_MOTORCYCLE = 'moto-mate/motorcycles/GET_MOTORCYCLE';
-const DELETE_MOTORCYCLE = 'moto-mate/aeroplanes/DELETE_MOTORCYCLE';
+const DELETE_MOTORCYCLE = 'moto-mate/motorcycles/DELETE_MOTORCYCLE';
 const initialState = [];
 
 export const fetchMotorcycle = createAsyncThunk(GET_MOTORCYCLE, async () => {

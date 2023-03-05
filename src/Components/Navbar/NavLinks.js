@@ -20,6 +20,7 @@ const NavLinks = ({ toggleNavbar }) => {
   useEffect(() => {
     const userId = localStorage.getItem('id');
     setIsLoggedIn(!!userId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localStorage.getItem('id')]);
 
   const isActive = (path) => {
