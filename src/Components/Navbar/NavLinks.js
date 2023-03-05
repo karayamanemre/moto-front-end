@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-const NavLinks = ({ handleClose }) => {
+// eslint-disable-next-line react/prop-types
+const NavLinks = ({ toggleNavbar }) => {
   const handleLogout = () => {
     localStorage.removeItem('name');
     localStorage.removeItem('id');
@@ -9,6 +10,7 @@ const NavLinks = ({ handleClose }) => {
   };
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const userId = localStorage.getItem('id');
@@ -18,21 +20,48 @@ const NavLinks = ({ handleClose }) => {
   useEffect(() => {
     const userId = localStorage.getItem('id');
     setIsLoggedIn(!!userId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [localStorage.getItem('id')]);
 
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
-    <ul className="mt-4 w-full text-lg sm:text-xl" onClick={handleClose}>
-      <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
+    <ul className="mt-4 w-full text-lg sm:text-xl" onClick={toggleNavbar}>
+      <li
+        className={`pl-4 py-2 ${
+          isActive('/motorcycles')
+            ? 'bg-cyan-900 text-white'
+            : 'hover:bg-cyan-900 hover:text-white'
+        }`}
+      >
         <NavLink to="/motorcycles">Motorcycles</NavLink>
       </li>
-      <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
+      <li
+        className={`pl-4 py-2 ${
+          isActive('/reservations')
+            ? 'bg-cyan-900 text-white'
+            : 'hover:bg-cyan-900 hover:text-white'
+        }`}
+      >
         <NavLink to="/reservations">My Reservations</NavLink>
       </li>
-      <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
+      <li
+        className={`pl-4 py-2 ${
+          isActive('/add-motorcycle')
+            ? 'bg-cyan-900 text-white'
+            : 'hover:bg-cyan-900 hover:text-white'
+        }`}
+      >
         <NavLink to="/add-motorcycle">Add a Motorcycle</NavLink>
       </li>
-      <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
+      <li
+        className={`pl-4 py-2 ${
+          isActive('/delete-motorcycle')
+            ? 'bg-cyan-900 text-white'
+            : 'hover:bg-cyan-900 hover:text-white'
+        }`}
+      >
         <NavLink to="/delete-motorcycle">Delete Motorcycle</NavLink>
       </li>
       {isLoggedIn ? (

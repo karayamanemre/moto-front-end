@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
@@ -12,35 +13,38 @@ const SwiperComponent = ({ motorcycles }) => {
     <Swiper
       slidesPerView={1}
       navigation
+      loop
+      centeredSlides={true}
+      spaceBetween={30}
       pagination={{ clickable: true }}
       breakpoints={{
-        1200: {
+        1300: {
           slidesPerView: 3,
         },
-        800: {
+        1000: {
           slidesPerView: 2,
         },
       }}
-      className="py-20 flex gap-4"
+      className="py-10"
     >
       {motorcycles.map((motorcycle) => (
         <SwiperSlide key={motorcycle.id}>
-          <div className="card m-2 p-2 flex flex-col items-center text-center border-4 rounded-2xl">
+          <div className="flex flex-col w-3/4 ml-10 items-center text-center rounded-3xl">
             <Link
               to={`/motorcycle-details/${motorcycle.id}`}
               onClick={() =>
                 localStorage.setItem('motorcycle', JSON.stringify(motorcycle))
               }
             >
-              <div className="w-96 h-72">
+              <div className="w-92 h-72 p-2">
                 <img
-                  className="rounded-2xl"
+                  className="rounded-2xl object-cover transition-all ease-in hover:scale-105"
                   src={motorcycle.img_url}
                   alt={motorcycle.name}
                 />
               </div>
             </Link>
-            <div className="p-6 text-center w-full">
+            <div className="p-2 text-center w-full">
               <h3 className="font-bold text-xl mb-2 border-b-4 border-cyan-800 border-dotted pb-4">
                 {motorcycle.name}
               </h3>

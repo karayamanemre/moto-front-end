@@ -30,16 +30,20 @@ const AddMotorcycle = () => {
   if (!localStorage.getItem('id')) {
     return (
       <div className="flex flex-col items-center justify-center h-screen p-2">
-        <h1 className="text-3xl font-bold mb-4">Sorry!</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Looks like you're not logged in yet. Please login to access this page.
+        <h1 className="sm:text-3xl text-2xl font-bold mb-4">Sorry!</h1>
+        <p className="text-lg text-gray-600 mb-8 text-center">
+          Looks like you&apos;re not logged in yet. Please login to access this
+          page.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="flex justify-center  w-full">
+    <div className="flex justify-center flex-col items-center w-full p-4">
+      <h2 className="sm:text-3xl text-2xl font-bold mb-6 pt-4">
+        Add a Motorcycle
+      </h2>
       <form
         onSubmit={handleSubmit}
         className="shadow-xl rounded-xl px-8 pt-6 pb-8 bg-gray-300 bg-opacity-70 w-3/4 sm:w-2/4"
@@ -164,7 +168,7 @@ const AddMotorcycle = () => {
         </div>
         <button
           type="submit"
-          className="bg-cyan-900 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-cyan-900 hover:bg-cyan-800 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
         >
           Add Motorcycle
         </button>

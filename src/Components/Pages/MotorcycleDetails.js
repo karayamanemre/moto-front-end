@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TiEdit } from 'react-icons/ti';
+import { TiEdit, TiArrowRightOutline } from 'react-icons/ti';
 
 const MotorcycleDetails = () => {
   const motorcycle = JSON.parse(localStorage.getItem('motorcycle'));
@@ -45,6 +45,7 @@ const MotorcycleDetails = () => {
           >
             <TiEdit className="inline-block mr-2" />
             Make a Reservation
+            <TiArrowRightOutline className="inline-block ml-2" />
           </Link>
         </li>
       </ul>

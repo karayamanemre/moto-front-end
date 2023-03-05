@@ -47,9 +47,10 @@ function MakeReservation() {
   if (!localStorage.getItem('id')) {
     return (
       <div className="flex flex-col items-center justify-center h-screen p-2">
-        <h1 className="text-3xl font-bold mb-4">Sorry!</h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Looks like you're not logged in yet. Please login to access this page.
+        <h1 className="sm:text-3xl text-2xl font-bold mb-4">Sorry!</h1>
+        <p className="text-lg text-gray-600 mb-8 text-center">
+          Looks like you&apos;re not logged in yet. Please login to access this
+          page.
         </p>
       </div>
     );
@@ -63,7 +64,7 @@ function MakeReservation() {
       <h1 className="text-4xl font-bold mb-4 text-gray-100">
         BOOK A TEST-RIDE
       </h1>
-      <p className="text-lg text-gray-200 mb-8">
+      <p className="text-lg text-gray-200 mb-8 p-2">
         Please use the form below to book a test ride in your city.
       </p>
       <form
@@ -114,7 +115,7 @@ function MakeReservation() {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-cyan-900 hover:bg-cyan-800 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-cyan-900 hover:bg-cyan-800 text-white py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Book a Test-Ride
