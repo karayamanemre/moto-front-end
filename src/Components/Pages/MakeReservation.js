@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { postReservation } from '../../redux/reservations';
 import { useNavigate } from 'react-router-dom';
 
-function MakeReservation() {
+const MakeReservation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -124,6 +124,6 @@ function MakeReservation() {
       </form>
     </div>
   );
-}
+};
 
 export default MakeReservation;
