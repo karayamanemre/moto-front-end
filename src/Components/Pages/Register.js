@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+const Login = () => {
   const [name, setName] = useState('');
   const [alert, setAlert] = useState('');
   const navigate = useNavigate();
@@ -85,5 +85,5 @@ function Login() {
       {alert && <span className="text-red-600 mt-2">{alert}</span>}
     </div>
   );
-}
+};
 export default Login;
