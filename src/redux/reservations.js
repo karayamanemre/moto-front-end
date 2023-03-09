@@ -9,7 +9,7 @@ export const fetchReservations = createAsyncThunk(
   async () => {
     const userId = localStorage.getItem('id');
     const response = await fetch(
-      `http://localhost:3000/api/v1/users/${userId}/reservations`,
+      `https://motomate-api.herokuapp.com/api/v1/users/${userId}/reservations`,
     );
     const data = await response.json();
     return data.data;
@@ -25,7 +25,7 @@ export const postReservation = createAsyncThunk(
     const motorcycleId = motorcycle.id;
 
     const response = await fetch(
-      `http://localhost:3000/api/v1/reservations/user/${userId}`,
+      `https://motomate-api.herokuapp.com/api/v1/reservations/user/${userId}`,
       {
         method: 'POST',
         headers: {
@@ -48,7 +48,7 @@ export const deleteReservation = createAsyncThunk(
   'reservations/deleteReservation',
   async (reservationId) => {
     const response = await fetch(
-      `http://localhost:3000/api/v1/reservations/user/${reservationId}`, // include the reservationId in the URL
+      `https://motomate-api.herokuapp.com/api/v1/reservations/user/${reservationId}`, // include the reservationId in the URL
       {
         method: 'DELETE',
       },

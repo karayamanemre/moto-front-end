@@ -7,7 +7,9 @@ const DELETE_MOTORCYCLE = 'moto-mate/motorcycles/DELETE_MOTORCYCLE';
 const initialState = [];
 
 export const fetchMotorcycle = createAsyncThunk(GET_MOTORCYCLE, async () => {
-  const data = await fetch('http://127.0.0.1:3000/api/v1/motorcycles');
+  const data = await fetch(
+    'https://motomate-api.herokuapp.com/api/v1/motorcycles',
+  );
   const response = await data.json();
   const motoList = Object.keys(response);
   const motos = [];
@@ -28,7 +30,7 @@ export const fetchMotorcycle = createAsyncThunk(GET_MOTORCYCLE, async () => {
 
 export const addMotorcycle = (motorcycle) => (dispatch) => {
   axios
-    .post('http://localhost:3000/api/v1/motorcycles', motorcycle)
+    .post('https://motomate-api.herokuapp.com/api/v1/motorcycles', motorcycle)
     .then((res) => {
       dispatch({
         type: ADD_MOTORCYCLE,
@@ -41,7 +43,9 @@ export const addMotorcycle = (motorcycle) => (dispatch) => {
 export const deleteMotorcycle = createAsyncThunk(
   'moto-mate/motorcycles/deleteMotorcycle',
   async (id) => {
-    await axios.delete(`http://127.0.0.1:3000/api/v1/motorcycles/${id}`);
+    await axios.delete(
+      `https://motomate-api.herokuapp.com/api/v1/motorcycles/${id}`,
+    );
     return id;
   },
 );

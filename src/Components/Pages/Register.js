@@ -21,12 +21,12 @@ const Login = () => {
       body: JSON.stringify(user),
     };
 
-    fetch('http://localhost:3000/api/v1/register', userData)
+    fetch('https://motomate-api.herokuapp.com/api/v1/register', userData)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
           // User already exists, log them in
-          fetch(`http://localhost:3000/api/v1/users?name=${name}`)
+          fetch(`https://motomate-api.herokuapp.com/api/v1/users?name=${name}`)
             .then((response) => response.json())
             .then((data) => {
               localStorage.setItem('id', data[0].id);
