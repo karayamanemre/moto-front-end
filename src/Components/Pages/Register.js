@@ -34,7 +34,7 @@ const Login = () => {
               setAlert('Logged in. Redirecting to main page.');
               setTimeout(() => {
                 setAlert('');
-                navigate('/motorcycles');
+                navigate('/');
                 window.location.reload();
               }, 1500);
             })
@@ -46,7 +46,7 @@ const Login = () => {
           setAlert('Logged in. Redirecting to main page.');
           setTimeout(() => {
             setAlert('');
-            navigate('/motorcycles');
+            navigate('/');
             window.location.reload();
           }, 1500);
         }
