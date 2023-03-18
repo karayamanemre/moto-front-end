@@ -9,7 +9,7 @@ const AddMotorcycle = () => {
   const [motorcycle, setMotorcycle] = useState({
     name: '',
     description: '',
-    img_url: '',
+    image: null,
     model_year: '',
     price: '',
     engine: '',
@@ -19,6 +19,11 @@ const AddMotorcycle = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setMotorcycle((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleFileChange = (event) => {
+    const { name, files } = event.target;
+    setMotorcycle((prevState) => ({ ...prevState, [name]: files[0] }));
   };
 
   const handleSubmit = (event) => {
@@ -47,6 +52,7 @@ const AddMotorcycle = () => {
       <form
         onSubmit={handleSubmit}
         className="shadow-xl rounded-xl px-8 pt-6 pb-8 bg-gray-300 bg-opacity-70 w-3/4 sm:w-2/4"
+        encType="multipart/form-data"
       >
         <div className="mb-2">
           <label
@@ -84,18 +90,17 @@ const AddMotorcycle = () => {
         <div className="mb-2">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="img_url"
+            htmlFor="image"
           >
-            Image URL
+            Image
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="img_url"
-            name="img_url"
-            type="text"
-            placeholder="Enter motorcycle image URL"
-            onChange={handleInputChange}
-            value={motorcycle.img_url}
+            id="image"
+            name="image"
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
           />
         </div>
         <div className="mb-2">
