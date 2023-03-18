@@ -9,33 +9,42 @@ const initialState = [];
 export const fetchMotorcycle = createAsyncThunk(GET_MOTORCYCLE, async () => {
   const data = await fetch('https://motomate.fly.dev/api/v1/motorcycles');
   const response = await data.json();
-  const motoList = Object.keys(response);
-  const motos = [];
-  motoList.map((key) =>
-    motos.push({
-      id: response[key].id,
-      name: response[key].name,
-      description: response[key].description,
-      img_url: response[key].img_url,
-      model_year: response[key].model_year,
-      price: response[key].price,
-      engine: response[key].engine,
-      fuel: response[key].fuel_type,
-    }),
-  );
+  const motos = response.map((motorcycle) => ({
+    id: motorcycle.id,
+    name: motorcycle.name,
+    description: motorcycle.description,
+    img_url: motorcycle.image_url,
+    model_year: motorcycle.model_year,
+    price: motorcycle.price,
+    engine: motorcycle.engine,
+    fuel: motorcycle.fuel_type,
+  }));
   return motos;
 });
 
-export const addMotorcycle = (motorcycle) => (dispatch) => {
-  axios
-    .post('https://motomate.fly.dev/api/v1/motorcycles', motorcycle)
-    .then((res) => {
-      dispatch({
-        type: ADD_MOTORCYCLE,
-        payload: res.data,
-      });
-    })
-    .catch((err) => err);
+export const addMotorcycle = (motorcycle) => async (dispatch) => {
+  const formData = new FormData();
+  Object.entries(motorcycle).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+
+  try {
+    const res = await axios.post(
+      'https://motomate.fly.dev/api/v1/motorcycles',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    );
+    dispatch({
+      type: ADD_MOTORCYCLE,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 export const deleteMotorcycle = createAsyncThunk(
