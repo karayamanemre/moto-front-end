@@ -39,7 +39,7 @@ const SwiperComponent = ({ motorcycles }) => {
               <div className="w-92 h-72 p-2">
                 <img
                   className="rounded-2xl object-cover transition-all ease-in hover:scale-105"
-                  src={motorcycle.img_url}
+                  src={`https://motomate.fly.dev/${motorcycle.img_url}`}
                   alt={motorcycle.name}
                 />
               </div>
