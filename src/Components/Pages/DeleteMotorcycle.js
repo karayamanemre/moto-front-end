@@ -41,7 +41,7 @@ const DeleteMotorcycles = () => {
             key={motorcycle.id}
           >
             <img
-              src={motorcycle.img_url}
+              src={`https://motomate.fly.dev${motorcycle.img_url}`}
               alt={motorcycle.name}
               className="h-44 w-96 object-cover rounded-t-lg"
             />

@@ -10,7 +10,7 @@ const MotorcycleDetails = () => {
       <div className="h-full w-3/4 sm:w-2/4 rounded-2xl bg-gray-200 p-2 shadow-lg flex justify-center">
         <img
           className="rounded-2xl"
-          src={motorcycle.img_url}
+          src={`https://motomate.fly.dev${motorcycle.img_url}`}
           alt={motorcycle.name}
         />
       </div>

@@ -29,7 +29,10 @@ const AddMotorcycle = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addMotorcycle(motorcycle));
-    navigate('/motorcycles');
+    setTimeout(() => {
+      navigate('/motorcycles');
+      window.location.reload();
+    }, 1500);
   };
 
   if (!localStorage.getItem('id')) {
@@ -95,13 +98,23 @@ const AddMotorcycle = () => {
             Image
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="hidden"
             id="image"
             name="image"
             type="file"
             accept="image/*"
             onChange={handleFileChange}
           />
+          <label
+            htmlFor="image"
+            className="inline-block bg-gray-200 rounded-lg px-4 py-2 leading-none shadow-md hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+          >
+            {motorcycle.image ? (
+              <span>{motorcycle.image.name}</span>
+            ) : (
+              <span>Select an image</span>
+            )}
+          </label>
         </div>
         <div className="mb-2">
           <label

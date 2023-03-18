@@ -20,7 +20,7 @@ const Reservations = () => {
 
   const getMotorcycleImage = (id) => {
     const motorcycle = motorcycles.find((moto) => moto.id === id);
-    return motorcycle ? motorcycle.img_url : '';
+    return motorcycle ? `https://motomate.fly.dev${motorcycle.img_url}` : '';
   };
 
   const handleDeleteReservation = (id) => {
