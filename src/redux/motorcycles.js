@@ -25,7 +25,7 @@ export const fetchMotorcycle = createAsyncThunk(GET_MOTORCYCLE, async () => {
 export const addMotorcycle = (motorcycle) => async (dispatch) => {
   const formData = new FormData();
   Object.entries(motorcycle).forEach(([key, value]) => {
-    formData.append(key, value);
+    formData.append(`motorcycle[${key}]`, value);
   });
 
   try {
