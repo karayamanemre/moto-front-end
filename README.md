@@ -103,22 +103,15 @@ To build the app for production, run the following command in your terminal:
   npm run build
 ```
 
-### Run tests
-
-- Run the following command to run all tests:
-
-```
-  npm test
-```
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 👥 Authors <a name="authors"></a>
 
 👤 **Emre Karayaman**
 
-- GitHub: [Emre Karayaman](https://github.com/karayamanemre)
+- GitHub: [karayamanemre](https://github.com/karayamanemre)
 - LinkedIn: [Emre Karayaman](https://www.linkedin.com/in/emre-karayaman-a7b45b243/)
+- Twitter: [@KarayamanEmre](https://twitter.com/KarayamanEmre)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
