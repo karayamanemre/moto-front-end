@@ -51,9 +51,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Add a motorcycle]**
-- **[Reserve a motorcycle]**
-- **[Delete a motorcycle]**
+- **Add a motorcycle**
+- **Reserve a motorcycle**
+- **Delete a motorcycle**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -124,8 +124,8 @@ To build the app for production, run the following command in your terminal:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Register with email and password.]**
-- [ ] **[Edit motorcycle details.]**
+- **Register with email and password.**
+- **Edit motorcycle details.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
