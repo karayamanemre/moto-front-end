@@ -24,7 +24,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="flex justify-center items-center bg-gray-100 min-h-screen sm:ml-56">
+      <div className="bg-gray-200 min-h-screen sm:ml-56">
         <Routes>
           <Route path="/" element={<Motorcycles />} />
           <Route path="/Motorcycles" element={<Motorcycles />} />

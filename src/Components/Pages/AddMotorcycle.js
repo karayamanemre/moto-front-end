@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addMotorcycle } from '../../redux/motorcycles';
 import { useNavigate } from 'react-router-dom';
+import TopNav from '../Navbar/TopNav';
 
 const AddMotorcycle = () => {
   const dispatch = useDispatch();
@@ -48,13 +49,11 @@ const AddMotorcycle = () => {
   }
 
   return (
-    <div className="flex justify-center flex-col items-center w-full p-4">
-      <h2 className="sm:text-3xl text-2xl font-bold mb-6 pt-4">
-        Add a Motorcycle
-      </h2>
+    <div className="flex justify-center flex-col items-center w-full">
+      <TopNav pageTitle="Add a Motorcycle" />
       <form
         onSubmit={handleSubmit}
-        className="shadow-xl rounded-xl px-8 pt-6 pb-8 bg-gray-300 bg-opacity-70 w-3/4 sm:w-2/4"
+        className="shadow-xl rounded-xl mt-10 sm:mt-30 px-8 pt-6 pb-8 bg-gray-300 bg-opacity-70 w-3/4 sm:w-2/4"
         encType="multipart/form-data"
       >
         <div className="mb-2">
@@ -107,12 +106,12 @@ const AddMotorcycle = () => {
           />
           <label
             htmlFor="image"
-            className="inline-block bg-gray-200 rounded-lg px-4 py-2 leading-none shadow-md hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
+            className="inline-block bg-white rounded-lg px-4 py-2 leading-none shadow-md hover:bg-gray-300 focus:bg-gray-300 cursor-pointer"
           >
             {motorcycle.image ? (
               <span>{motorcycle.image.name}</span>
             ) : (
-              <span>Select an image</span>
+              <span>Upload an image</span>
             )}
           </label>
         </div>

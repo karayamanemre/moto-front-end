@@ -7,6 +7,7 @@ const NavLinks = ({ toggleNavbar }) => {
     localStorage.removeItem('name');
     localStorage.removeItem('id');
     setIsLoggedIn(false);
+    window.location.reload();
   };
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);

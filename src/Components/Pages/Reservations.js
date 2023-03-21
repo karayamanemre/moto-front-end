@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReservation, fetchReservations } from '../../redux/reservations';
 import { fetchMotorcycle } from '../../redux/motorcycles';
+import TopNav from '../Navbar/TopNav';
 
 const Reservations = () => {
   const dispatch = useDispatch();
@@ -42,14 +43,9 @@ const Reservations = () => {
   }
 
   return (
-    <div className="flex justify-center flex-col items-center p-4">
-      <h2 className="sm:text-3xl text-2xl font-bold mb-6 pt-4">
-        Reservations for:{' '}
-        {localStorage.getItem('name') &&
-          localStorage.getItem('name').charAt(0).toUpperCase() +
-            localStorage.getItem('name').slice(1)}
-      </h2>
-      <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full">
+    <div>
+      <TopNav pageTitle="Reservations" />
+      <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full pt-10 sm:pt-40">
         {reservations.length === 0 && (
           <p className="text-lg font-bold text-gray-800 text-center">
             You have no reservations yet.

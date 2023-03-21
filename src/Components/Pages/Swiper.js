@@ -45,7 +45,7 @@ const SwiperComponent = ({ motorcycles }) => {
               </div>
             </Link>
             <div className="p-2 text-center w-full">
-              <h3 className="font-bold text-xl mb-2 border-b-4 border-cyan-800 border-dotted pb-4">
+              <h3 className="font-bold text-xl mb-2 border-b-4 border-cyan-800 border-dotted py-4">
                 {motorcycle.name}
               </h3>
               <p className="text-gray-500 text-base">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { IoMdMenu, IoMdClose } from 'react-icons/io';
+import { IoMdArrowDropright, IoMdArrowDropleft } from 'react-icons/io';
 import NavLinks from './NavLinks';
 import SocialLinks from './SocialLinks';
 import Logo from '../../Images/logo.png';
@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="hidden sm:block fixed left-0 top-0 w-56 h-screen bg-white shadow-2xl">
+      <nav className="hidden sm:block fixed left-0 top-16 w-56 h-screen bg-white shadow-xl">
         <div className="flex p-2">
           <img src={Logo} alt="Logo" />
         </div>
@@ -40,15 +40,19 @@ const Navbar = () => {
       <div className="sm:hidden">
         <nav
           ref={navRef}
-          className={`fixed left-0 top-0 w-56 h-screen z-50 bg-white shadow-2xl transform transition-all duration-300 ${
+          className={`fixed left-0 top-0 w-[180px] h-screen z-50 bg-white shadow-2xl transform transition-all duration-300 ${
             isOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
           <button
-            className="fixed top-0 -right-12 py-2 px-2 bg-white rounded-r-2xl shadow-xl"
+            className="fixed top-[11px] -right-[40px] flex items-center justify-center w-[40px] h-[40px] shadow-xl bg-cyan-900 text-white"
             onClick={toggleNavbar}
           >
-            {isOpen ? <IoMdClose size={32} /> : <IoMdMenu size={32} />}
+            {isOpen ? (
+              <IoMdArrowDropleft size={30} />
+            ) : (
+              <IoMdArrowDropright size={30} />
+            )}
           </button>
           <div className="flex p-2">
             <img src={Logo} alt="Logo" />

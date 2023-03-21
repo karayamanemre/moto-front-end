@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteMotorcycle, fetchMotorcycle } from '../../redux/motorcycles';
 import { TiDelete } from 'react-icons/ti';
+import TopNav from '../Navbar/TopNav';
 
 const DeleteMotorcycles = () => {
   const dispatch = useDispatch();
@@ -30,11 +31,9 @@ const DeleteMotorcycles = () => {
   }
 
   return (
-    <div className="flex justify-center flex-col items-center p-4">
-      <h2 className="sm:text-3xl text-2xl font-bold mb-6 pt-4 text-center">
-        Delete Motorcycles
-      </h2>
-      <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full">
+    <div>
+      <TopNav pageTitle="Delete a Motorcycle" />
+      <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full pt-10 sm:pt-40">
         {motorcycles.map((motorcycle) => (
           <div
             className="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"

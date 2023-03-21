@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import TopNav from '../Navbar/TopNav';
 
 const Login = () => {
   const [name, setName] = useState('');
@@ -57,11 +58,11 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center">
+      <TopNav pageTitle="Login" />
       <form
         onSubmit={createUser}
-        className="flex flex-col bg-gray-300 p-8 gap-4 rounded-2xl shadow-lg"
+        className="flex flex-col bg-gray-300 mt-10 sm:mt-40 p-8 gap-4 rounded-2xl shadow-lg"
       >
-        <h2 className="text-2xl font-bold text-center">Login</h2>
         <label htmlFor="name" className="hidden">
           Name:
         </label>
@@ -79,7 +80,7 @@ const Login = () => {
           type="submit"
           className="bg-cyan-900 hover:bg-cyan-800 text-white py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
         >
-          Submit
+          Login
         </button>
       </form>
       {alert && <span className="text-red-600 mt-2">{alert}</span>}
