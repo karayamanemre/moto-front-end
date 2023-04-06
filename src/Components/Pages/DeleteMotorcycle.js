@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { deleteMotorcycle, fetchMotorcycle } from '../../redux/motorcycles';
 import { TiDelete } from 'react-icons/ti';
 import TopNav from '../Navbar/TopNav';
@@ -23,8 +24,11 @@ const DeleteMotorcycles = () => {
       <div className="flex flex-col items-center justify-center h-screen p-2">
         <h1 className="sm:text-3xl text-2xl font-bold mb-4">Sorry!</h1>
         <p className="text-lg text-gray-600 mb-8 text-center">
-          Looks like you&apos;re not logged in yet. Please login to access this
-          page.
+          Looks like you&apos;re not logged in yet. Please{' '}
+          <NavLink to="/login" className={'font-bold'}>
+            login
+          </NavLink>{' '}
+          to access this page.
         </p>
       </div>
     );

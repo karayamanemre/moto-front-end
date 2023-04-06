@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Motorcycles from './Components/Pages/Motorcycles';
 import DeleteMotorcycle from './Components/Pages/DeleteMotorcycle';
@@ -14,7 +14,10 @@ const PageNotFound = () => {
     <div className="flex flex-col items-center justify-center h-screen p-2">
       <h1 className="text-3xl font-bold mb-4">Page not found</h1>
       <p className="text-lg text-gray-600 mb-8">
-        We couldn&apos;t find the page you were looking for.
+        We couldn&apos;t find the page you were looking for. Back to{' '}
+        <NavLink to="/motorcycles" className={'font-bold'}>
+          home page.
+        </NavLink>
       </p>
     </div>
   );
